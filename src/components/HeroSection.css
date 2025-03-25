@@ -1,0 +1,30 @@
+.hero-section {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  background-size: contain; 
+  background-position: center; 
+  background-repeat: no-repeat;
+  position: relative;  /* Ensure positioning context for absolute elements */
+}
+
+.hero-background {
+  position: absolute;  /* Keep the background image behind content */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;  /* Ensure the background stays behind the text */
+}
+
+.hero-content {
+  z-index: 1;  /* Make sure the text is on top */
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
