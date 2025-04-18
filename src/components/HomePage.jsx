@@ -4,6 +4,8 @@ import HeroSection from './HeroSection.jsx';
 import Portfolio from './Portfolio.jsx';
 import Footer from './Footer.jsx';
 import PackageSection from './Packages.jsx';
+import AboutSection from './About.jsx';
+import TreeAnimation from './About.jsx';
 
 const HomePage = () => {
   return (
@@ -11,6 +13,7 @@ const HomePage = () => {
       <Header />
       <HeroSection />
       <Portfolio />
+      <TreeAnimation/>
       <PackageSection/>
       <Footer />
     </div>

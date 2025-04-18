@@ -1,48 +1,47 @@
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React from "react";
+import Masonry from "react-masonry-css";
+import { motion } from "framer-motion";
 
-
-const imageSets = [
-  ["/assets/Portfolio1.jpg", "/assets/Portfolio2.jpg", "/assets/Portfolio3.jpg"], 
-  ["/assets/Portfolio4.jpg", "/assets/Portfolio5.jpg", "/assets/Portfolio6.jpg"], 
-  ["/assets/Portfolio7.jpg", "/assets/Portfolio8.jpg", "/assets/Portfolio9.jpg"], 
+const images = [
+  "/assets/Portfolio1.jpg",
+  "/assets/Portfolio2.jpg",
+  "/assets/Portfolio3.jpg",
+  "/assets/Portfolio4.jpg",
+  "/assets/Portfolio5.jpg",
+  "/assets/Portfolio6.jpg",
+  "/assets/Portfolio7.jpg",
+  "/assets/Portfolio8.jpg",
+  "/assets/Portfolio9.jpg",
 ];
 
 const Portfolio = () => {
-  const [indices, setIndices] = useState([0, 0, 0]);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIndices((prevIndices) =>
-        prevIndices.map((index, i) => (index + 1) % imageSets[i].length)
-      );
-    }, 3000);
-    
-    return () => clearInterval(interval);
-  }, []);
+  const breakpoints = {
+    default: 5, // 3 columns on large screens
+    1024: 3,    // 2 columns on tablets
+    768: 1,     // 1 column on mobile
+  };
 
   return (
-    <section className="min-h-screen flex flex-col justify-center items-center bg-gray-100 py-12" id="portfolio">
-      <h2 className="text-3xl font-bold text-center mb-8">Our Featured Work</h2>
+    <section className="min-h-screen flex flex-col justify-center items-center bg-[#F5E1C8] py-12" id="portfolio">
+     <div className="w-full bg-[#F5E1C8] py-12 flex justify-center">
+     <h2 className="text-4xl font-normal text-center px-6 max-w-4xl font-[Dancing Script] italic">
+  <span className="text-violet-400">choosing to elope opens up endless possibilities, but often becomes overwhelming  </span>
+  <span className="text-rose-200"> - let me help!</span>
+</h2>
+
+</div>
       <div className="w-full px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          {imageSets.map((images, i) => (
-            <div key={i} className="portfolio-item relative w-full h-64 overflow-hidden">
-              <AnimatePresence mode="wait">
-                <motion.img
-                  key={indices[i]} 
-                  src={images[indices[i]]}
-                  alt={`Portfolio ${indices[i] + 1}`}
-                  className="absolute w-full h-full object-cover rounded-lg shadow-lg"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 1.5, ease: "easeInOut" }}
-                />
-              </AnimatePresence>
-            </div>
+        <Masonry breakpointCols={breakpoints} className="flex gap-6" columnClassName="masonry-column">
+          {images.map((img, index) => (
+            <motion.div
+              key={index}
+              className="relative mb-6 overflow-hidden rounded-lg shadow-lg"
+              whileHover={{ scale: 1.05, boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.2)" }}
+            >
+              <img src={img} alt={`Portfolio ${index + 1}`} className="w-full h-auto object-cover" />
+            </motion.div>
           ))}
-        </div>
+        </Masonry>
       </div>
     </section>
   );
