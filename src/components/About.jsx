@@ -33,8 +33,8 @@ If my work resonates with you, I’d be honored to be part of your journey — t
         transition={{ duration: 1 }}
       >
         <img 
-          src="/assets/about.jpg" 
-          alt="Photographer" 
+            src={`${import.meta.env.BASE_URL}assets/about.jpg`} 
+            alt="Photographer" 
           className="w-80 h-80 md:w-96 md:h-96 object-cover rounded-2xl shadow-lg"
         />
       </motion.div>

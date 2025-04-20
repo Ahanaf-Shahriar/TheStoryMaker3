@@ -4,11 +4,10 @@ import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import './HeroSection.css';
 
 const backgrounds = [
-  '/assets/cover1.jpg',
-  '/assets/cover2.jpg',
-  '/assets/cover3.jpg',
-  '/assets/cover4.jpg'
-
+  `${import.meta.env.BASE_URL}assets/cover1.jpg`,
+  `${import.meta.env.BASE_URL}assets/cover2.jpg`,
+  `${import.meta.env.BASE_URL}assets/cover3.jpg`,
+  `${import.meta.env.BASE_URL}assets/cover4.jpg`
 ];
 
 const HeroSection = () => {

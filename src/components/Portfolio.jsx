@@ -3,16 +3,17 @@ import Masonry from "react-masonry-css";
 import { motion } from "framer-motion";
 
 const images = [
-  "/assets/Portfolio1.jpg",
-  "/assets/Portfolio2.jpg",
-  "/assets/Portfolio3.jpg",
-  "/assets/Portfolio4.jpg",
-  "/assets/Portfolio5.jpg",
-  "/assets/Portfolio6.jpg",
-  "/assets/Portfolio7.jpg",
-  "/assets/Portfolio8.jpg",
-  "/assets/Portfolio9.jpg",
+  `${import.meta.env.BASE_URL}assets/Portfolio1.jpg`,
+  `${import.meta.env.BASE_URL}assets/Portfolio2.jpg`,
+  `${import.meta.env.BASE_URL}assets/Portfolio3.jpg`,
+  `${import.meta.env.BASE_URL}assets/Portfolio4.jpg`,
+  `${import.meta.env.BASE_URL}assets/Portfolio5.jpg`,
+  `${import.meta.env.BASE_URL}assets/Portfolio6.jpg`,
+  `${import.meta.env.BASE_URL}assets/Portfolio7.jpg`,
+  `${import.meta.env.BASE_URL}assets/Portfolio8.jpg`,
+  `${import.meta.env.BASE_URL}assets/Portfolio9.jpg`,
 ];
+
 
 const Portfolio = () => {
   const breakpoints = {

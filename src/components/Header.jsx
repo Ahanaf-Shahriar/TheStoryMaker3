@@ -16,7 +16,7 @@ const Header = () => {
         {/* Logo Section */}
         <div className="flex items-center space-x-2">
           <img 
-            src="/assets/Orgilan-01.png" 
+            src={`${import.meta.env.BASE_URL}assets/Orgilan-01.png`} 
             alt="Logo" 
             className="h-16 w-auto object-contain"
           />
