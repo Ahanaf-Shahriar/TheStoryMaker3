@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useRef } from "react";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 
 const packages = [
   { name: "Basic", price: "5,000Tk", details: ["1 senior Photographer", "Online Delivery", "5 Hour Coverage"] },
@@ -16,13 +16,23 @@ const packages = [
 
 const PackageSection = () => {
   const [expanded, setExpanded] = useState(null);
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "center center"] });
+
+  const y = useTransform(scrollYProgress, [0, 1], [100, 0]);
+  const opacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   const toggleDetails = (index) => {
     setExpanded(expanded === index ? null : index);
   };
 
   return (
-    <section className="w-full py-16 px-6 text-center bg-gradient-to-b bg-[#F5E1C8] to-indigo-50" id="packages">
+    <motion.section
+      ref={ref}
+      style={{ y, opacity }}
+      className="w-full py-16 px-6 text-center bg-gradient-to-b bg-[#F5E1C8] to-indigo-50"
+      id="packages"
+    >
       <h2 className="text-4xl font-bold text-gray-800 mb-10">Choose Your Perfect Package</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 max-w-7xl mx-auto">
         {packages.map((pkg, index) => (
@@ -78,7 +88,7 @@ const PackageSection = () => {
           </motion.div>
         ))}
       </div>
-    </section>
+    </motion.section>
   );
 };
 

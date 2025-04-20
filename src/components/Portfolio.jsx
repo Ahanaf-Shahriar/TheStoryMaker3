@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useRef } from "react";
 import Masonry from "react-masonry-css";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const images = [
   `${import.meta.env.BASE_URL}assets/Portfolio1.jpg`,
@@ -14,23 +14,36 @@ const images = [
   `${import.meta.env.BASE_URL}assets/Portfolio9.jpg`,
 ];
 
-
 const Portfolio = () => {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "center center"]
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [100, 0]);
+  const opacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
+
   const breakpoints = {
-    default: 5, // 3 columns on large screens
-    1024: 3,    // 2 columns on tablets
-    768: 1,     // 1 column on mobile
+    default: 5,
+    1024: 3,
+    768: 1,
   };
 
   return (
-    <section className="min-h-screen flex flex-col justify-center items-center bg-[#F5E1C8] py-12" id="portfolio">
-     <div className="w-full bg-[#F5E1C8] py-12 flex justify-center">
-     <h2 className="text-4xl font-normal text-center px-6 max-w-4xl font-[Dancing Script] italic">
-  <span className="text-violet-400">choosing to elope opens up endless possibilities, but often becomes overwhelming  </span>
-  <span className="text-rose-200"> - let me help!</span>
-</h2>
+    <motion.section
+      ref={ref}
+      style={{ y, opacity }}
+      className="min-h-screen flex flex-col justify-center items-center bg-[#F5E1C8] py-12"
+      id="portfolio"
+    >
+      <div className="w-full bg-[#F5E1C8] py-12 flex justify-center">
+        <h2 className="text-4xl font-normal text-center px-6 max-w-4xl font-[Dancing Script] italic">
+          <span className="text-violet-400">choosing to elope opens up endless possibilities, but often becomes overwhelming </span>
+          <span className="text-rose-200"> - let me help!</span>
+        </h2>
+      </div>
 
-</div>
       <div className="w-full px-4">
         <Masonry breakpointCols={breakpoints} className="flex gap-6" columnClassName="masonry-column">
           {images.map((img, index) => (
@@ -44,7 +57,7 @@ const Portfolio = () => {
           ))}
         </Masonry>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
