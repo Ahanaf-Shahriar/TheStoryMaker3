@@ -9,17 +9,17 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-white/80 backdrop-blur-md shadow-lg w-full fixed top-0 left-0 z-50">
-      <nav className="container mx-auto px-4 py-3 flex justify-between items-center">
+    <header className="bg-white/80 backdrop-blur-md shadow-xl w-full fixed top-0 left-0 z-50">
+      <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
         
         {/* Logo Section */}
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center space-x-4">
           <img 
             src={`${import.meta.env.BASE_URL}assets/Orgilan-01.png`} 
             alt="Logo" 
-            className="h-14 w-auto object-contain"
+            className="h-16 w-auto object-contain"
           />
-          <div className="text-xl font-bold tracking-wide">
+          <div className="text-2xl font-bold tracking-wide">
             <span className="text-emerald-700">The</span>
             <span className="text-gray-800">Story</span>
             <span className="text-emerald-700">Maker</span>
@@ -32,11 +32,11 @@ const Header = () => {
           onClick={() => setMenuOpen(!menuOpen)}
         >
           {menuOpen ? (
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
           ) : (
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
             </svg>
           )}
@@ -48,7 +48,7 @@ const Header = () => {
             menuOpen ? "block" : "hidden"
           } md:flex`}
         >
-          {["Home", "About", "Portfolio", "Packages", "Contact"].map((item) => (
+          {["Home", "About", "Portfolio", "Packages"].map((item) => (
             <li key={item}>
               <a
                 href={`#${item.toLowerCase()}`}

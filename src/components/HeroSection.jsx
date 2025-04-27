@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import './HeroSection.css';
 
 const backgrounds = [
@@ -17,7 +16,7 @@ const HeroSection = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       nextSlide();
-    }, 3000); // Change background every 3 seconds
+    }, 5000);
 
     return () => clearInterval(interval);
   }, [index]);
@@ -27,37 +26,50 @@ const HeroSection = () => {
     setIndex((prevIndex) => (prevIndex + 1) % backgrounds.length);
   };
 
-  const prevSlide = () => {
-    setDirection(-1);
-    setIndex((prevIndex) => (prevIndex - 1 + backgrounds.length) % backgrounds.length);
-  };
-
   return (
-    <section className="hero-section" id="home">
+    <section className="hero-section relative" id="home">
+      {/* Background image */}
       <div className="hero-background relative overflow-hidden">
         <AnimatePresence initial={false} custom={direction}>
           <motion.img
             key={index}
             src={backgrounds[index]}
-            alt="Background"
+            alt="Photography background - The Story Maker"
             className="absolute w-full h-full object-cover"
             initial={{ x: direction > 0 ? '100%' : '-100%', opacity: 0 }}
             animate={{ x: '0%', opacity: 1 }}
             exit={{ x: direction > 0 ? '-100%' : '100%', opacity: 0 }}
-            transition={{ duration: 0.8, ease: 'easeInOut' }}
+            transition={{ duration: 1, ease: 'easeInOut' }}
           />
         </AnimatePresence>
-        <button className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 p-2 rounded-full text-white" onClick={prevSlide}>
-          <FaChevronLeft size={24} />
-        </button>
-        <button className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 p-2 rounded-full text-white" onClick={nextSlide}>
-          <FaChevronRight size={24} />
-        </button>
       </div>
-      <div className="hero-content absolute inset-0 flex flex-col justify-center items-center text-white text-center">
-        <h1 className="text-4xl font-bold">Your Dream Wedding, Captured Beautifully</h1>
-        <p className="text-lg mt-2">Discover unforgettable moments with us.</p>
-      </div>
+
+      {/* Dark semi-transparent overlay */}
+      <div className="absolute inset-0 bg-black/15 z-10"></div>
+
+      {/* Text Content with animation */}
+      <motion.div
+  className="hero-content absolute inset-0 flex flex-col justify-center items-center text-center px-4 z-20"
+  initial={{ opacity: 0, y: 30 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 1, ease: 'easeOut', delay: 0.5 }}
+>
+  <h1 className="text-5xl md:text-6xl font-extrabold leading-tight mb-4">
+    <span className="text-white">Capturing moments,</span>{' '}
+    <span className="text-green-800">weaving stories.</span>
+  </h1>
+
+  <motion.p
+    className="text-lg md:text-xl max-w-2xl"
+    initial={{ opacity: 0, y: 10 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 1.2, ease: 'easeOut', delay: 1 }}
+  >
+    <span className="text-green-800 font-extrabold">The Story Maker</span>
+    <span className="text-white font-bold"> — Your trusted visual storyteller since 2019.</span>
+  </motion.p>
+</motion.div>
+
     </section>
   );
 };

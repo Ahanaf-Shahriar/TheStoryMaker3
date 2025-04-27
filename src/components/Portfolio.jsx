@@ -18,44 +18,68 @@ const Portfolio = () => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "center center"]
+    offset: ["start end", "center center"],
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], [100, 0]);
+  const y = useTransform(scrollYProgress, [0, 1], [80, 0]);
   const opacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   const breakpoints = {
     default: 5,
     1024: 3,
-    768: 1,
+    768: 2,
+    640: 1,
   };
 
   return (
     <motion.section
       ref={ref}
       style={{ y, opacity }}
-      className="min-h-screen flex flex-col justify-center items-center bg-[#F5E1C8] py-12"
+      className="min-h-screen flex flex-col justify-center items-center bg-gradient-to-b from-[#f5e1c8] to-[#e8d9c2] py-20"
       id="portfolio"
     >
-      <div className="w-full bg-[#F5E1C8] py-12 flex justify-center">
-        <h2 className="text-4xl font-normal text-center px-6 max-w-4xl font-[Dancing Script] italic">
-          <span className="text-violet-400">choosing to elope opens up endless possibilities, but often becomes overwhelming </span>
-          <span className="text-rose-200"> - let me help!</span>
+      {/* SEO Optimized Title */}
+      <div className="w-full flex flex-col items-center px-6 text-center mb-16">
+        <h2 className="text-5xl md:text-6xl font-bold text-gray-800 font-parisienne italic leading-tight mb-6">
+          Timeless Moments
         </h2>
+        <p className="text-gray-600 max-w-2xl text-lg">
+          Discover a curated collection of real wedding stories, candid moments, and heartfelt celebrations.
+        </p>
       </div>
 
+      {/* Portfolio Gallery */}
       <div className="w-full px-4">
-        <Masonry breakpointCols={breakpoints} className="flex gap-6" columnClassName="masonry-column">
+        <Masonry
+          breakpointCols={breakpoints}
+          className="flex gap-6"
+          columnClassName="masonry-column"
+        >
           {images.map((img, index) => (
             <motion.div
               key={index}
-              className="relative mb-6 overflow-hidden rounded-lg shadow-lg"
-              whileHover={{ scale: 1.05, boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.2)" }}
+              className="relative mb-6 overflow-hidden rounded-3xl bg-white shadow-md hover:shadow-2xl transition-all"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.3, ease: "easeOut", delay: index * 0.05 }} // Faster fade-in duration
+              whileHover={{ scale: 1.04, boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.15)" }}
             >
-              <img src={img} alt={`Portfolio ${index + 1}`} className="w-full h-auto object-cover" />
+              <img
+                src={img}
+                alt={`Wedding Portfolio Photo ${index + 1}`}
+                className="w-full h-auto object-cover rounded-3xl"
+              />
             </motion.div>
           ))}
         </Masonry>
+      </div>
+
+      {/* SEO Text at Bottom */}
+      <div className="max-w-3xl mx-auto mt-20 text-center text-gray-500 text-sm leading-relaxed px-4">
+        <p>
+          Capturing authentic wedding moments across Dhaka, Chittagong, Sylhet, and beyond — from vibrant Holud ceremonies to intimate Nikah gatherings. Let us turn your wedding day into a visual story you'll cherish forever.
+        </p>
       </div>
     </motion.section>
   );
