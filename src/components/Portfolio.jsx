@@ -18,7 +18,7 @@ const Portfolio = () => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "center center"],
+    offset: ["start 0.9", "start 0.3"],
   });
 
   const y = useTransform(scrollYProgress, [0, 1], [80, 0]);
@@ -34,9 +34,10 @@ const Portfolio = () => {
   return (
     <motion.section
       ref={ref}
+      id="portfolio"
+      aria-label="Wedding photography portfolio gallery by The Story Maker"
       style={{ y, opacity }}
       className="min-h-screen flex flex-col justify-center items-center bg-gradient-to-b from-[#f5e1c8] to-[#e8d9c2] py-20"
-      id="portfolio"
     >
       {/* SEO Optimized Title */}
       <div className="w-full flex flex-col items-center px-6 text-center mb-16">
@@ -61,9 +62,16 @@ const Portfolio = () => {
               className="relative mb-6 overflow-hidden rounded-3xl bg-white shadow-md hover:shadow-2xl transition-all"
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.3, ease: "easeOut", delay: index * 0.05 }} // Faster fade-in duration
-              whileHover={{ scale: 1.04, boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.15)" }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{
+                duration: 0.5,
+                ease: "easeOut",
+                delay: index * 0.05,
+              }}
+              whileHover={{
+                scale: 1.04,
+                boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.15)",
+              }}
             >
               <img
                 src={img}

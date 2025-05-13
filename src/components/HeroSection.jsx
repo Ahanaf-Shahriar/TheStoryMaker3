@@ -27,14 +27,14 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="hero-section relative" id="home">
+    <section className="hero-section relative w-full h-screen" id="home" aria-label="Hero section with rotating background photography">
       {/* Background image */}
-      <div className="hero-background relative overflow-hidden">
+      <div className="hero-background absolute inset-0 overflow-hidden">
         <AnimatePresence initial={false} custom={direction}>
           <motion.img
             key={index}
             src={backgrounds[index]}
-            alt="Photography background - The Story Maker"
+            alt={`Background photo ${index + 1} - The Story Maker Photography`}
             className="absolute w-full h-full object-cover"
             initial={{ x: direction > 0 ? '100%' : '-100%', opacity: 0 }}
             animate={{ x: '0%', opacity: 1 }}
@@ -44,32 +44,31 @@ const HeroSection = () => {
         </AnimatePresence>
       </div>
 
-      {/* Dark semi-transparent overlay */}
-      <div className="absolute inset-0 bg-black/15 z-10"></div>
+      {/* Balanced overlay for contrast */}
+      <div className="absolute inset-0 bg-black/25 z-10"></div>
 
-      {/* Text Content with animation */}
+      {/* Text Content */}
       <motion.div
-  className="hero-content absolute inset-0 flex flex-col justify-center items-center text-center px-4 z-20"
-  initial={{ opacity: 0, y: 30 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 1, ease: 'easeOut', delay: 0.5 }}
->
-  <h1 className="text-5xl md:text-6xl font-extrabold leading-tight mb-4">
-    <span className="text-white">Capturing moments,</span>{' '}
-    <span className="text-green-800">weaving stories.</span>
-  </h1>
+        className="hero-content absolute inset-0 flex flex-col justify-center items-center text-center px-4 z-20"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, ease: 'easeOut', delay: 0.5 }}
+      >
+        <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-4 text-white drop-shadow-2xl">
+          <span>Capturing moments,</span>{' '}
+          <span className="text-emerald-400">weaving stories.</span>
+        </h1>
 
-  <motion.p
-    className="text-lg md:text-xl max-w-2xl"
-    initial={{ opacity: 0, y: 10 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 1.2, ease: 'easeOut', delay: 1 }}
-  >
-    <span className="text-green-800 font-extrabold">The Story Maker</span>
-    <span className="text-white font-bold"> — Your trusted visual storyteller since 2019.</span>
-  </motion.p>
-</motion.div>
-
+        <motion.p
+          className="text-md md:text-xl text-white max-w-2xl font-medium drop-shadow-xl"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2, ease: 'easeOut', delay: 1 }}
+        >
+          <strong className="text-green-600">The Story Maker</strong>
+          <span className="ml-1">— Premium visual storytelling since 2019.</span>
+        </motion.p>
+      </motion.div>
     </section>
   );
 };
