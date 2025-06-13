@@ -1,5 +1,6 @@
-import { StrictMode, useEffect } from "react";
+import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+import { HelmetProvider } from "react-helmet-async";  // <-- Import this
 import ReactPixel from "react-facebook-pixel";
 import "./index.css";
 import HomePage from "./components/HomePage.jsx";
@@ -12,6 +13,8 @@ ReactPixel.pageView(); // Track initial page load
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <HomePage />
+    <HelmetProvider>   {/* <-- Wrap here */}
+      <HomePage />
+    </HelmetProvider>
   </StrictMode>
 );
