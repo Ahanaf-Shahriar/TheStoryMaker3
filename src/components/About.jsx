@@ -27,19 +27,27 @@ const AboutSection = () => {
         transition={{ duration: 1 }}
         aria-labelledby="about-heading"
       >
-        <h1 id="about-heading" className="text-5xl font-parisienne text-gray-800 italic mb-6">
+        <h1
+          id="about-heading"
+          className="text-5xl font-parisienne text-gray-800 italic mb-6"
+        >
           Meet Your Wedding Photographer in Bangladesh
         </h1>
         <p className="text-lg text-gray-700 leading-relaxed">
           Hello, I’m <strong className="text-green-800">Anisur Rahman</strong> — a passionate{" "}
-          <strong>wedding photographer based in Bangladesh</strong>, dedicated to capturing authentic, emotional, and timeless wedding moments.
-          <br /><br />
-          To me, <strong>wedding photography</strong> goes beyond the lens — it’s a heartfelt connection with people, emotions, and the intricate beauty of every celebration.
-          From vibrant <strong>Holud ceremonies</strong> to quiet moments of joy, my goal is to document <em>honest love stories</em> that stand the test of time.
-          <br /><br />
-          I operate independently, delivering a personal, soulful experience to each couple. Whether you’re planning a colorful wedding in <strong>Dhaka</strong>, or a scenic beach ceremony in <strong>Cox’s Bazar</strong>, I bring dedication, creativity, and emotion to every frame.
-          <br /><br />
-          If you’re searching for a <strong>wedding photographer in Bangladesh</strong> who values storytelling and genuine moments, I’d be honored to help you create lasting memories. Let’s capture your special day — beautifully and authentically.
+          <strong>wedding photographer based in Bangladesh</strong>, devoted to capturing the honest, emotional, and timeless moments that make your wedding uniquely yours.
+        </p>
+        <br />
+        <p className="text-lg text-gray-700 leading-relaxed">
+          To me, photography is more than just images — it’s about connection. It’s the stolen glances, the joyful chaos, the quiet in-betweens. From the vibrant rhythm of <strong>Holud ceremonies</strong> to the intimate stillness of your vows, I approach every celebration with heart and intention.
+        </p>
+        <br />
+        <p className="text-lg text-gray-700 leading-relaxed">
+          Working independently allows me to offer a deeply personal experience. Whether you're planning a colorful wedding in <strong>Dhaka</strong> or a serene coastal ceremony in <strong>Cox’s Bazar</strong>, my focus remains the same — to tell your love story with authenticity, artistry, and soul.
+        </p>
+        <br />
+        <p className="text-lg text-gray-700 leading-relaxed">
+          If you’re looking for a <strong>wedding photographer in Bangladesh</strong> who values real moments over posed perfection — I’d be honored to document your day in a way that feels true to you.
         </p>
       </motion.article>
 
@@ -52,12 +60,12 @@ const AboutSection = () => {
       >
         <img
           src={`${import.meta.env.BASE_URL}assets/about.jpg`}
-          alt="Anisur Rahman, top wedding photographer in Bangladesh capturing authentic moments"
+          alt="Anisur Rahman - Bangladesh wedding photographer capturing real moments"
           className="w-80 h-80 md:w-96 md:h-96 object-cover rounded-2xl shadow-2xl"
           loading="lazy"
         />
         <figcaption className="sr-only">
-          Anisur Rahman — Bangladeshi wedding photographer specializing in candid, emotional moments
+          Anisur Rahman – Bangladeshi wedding photographer capturing Holud, Nikah, and beach wedding moments with emotion and elegance.
         </figcaption>
       </motion.figure>
     </motion.section>

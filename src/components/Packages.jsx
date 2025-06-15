@@ -3,50 +3,370 @@ import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 
 const demoLinks = {
-  Akath: "https://www.facebook.com/share/p/18ufckqyrq/",
-  Cristine: "https://www.facebook.com/share/p/15p75KfAV4/",
-  "Wedding Reception": "https://www.facebook.com/share/p/1ErUpCoPJ5/",
-  Outdoor: "https://www.facebook.com/share/p/12CFPrMwmis/",
-  Wedding: "https://www.facebook.com/share/p/1AVXF8CRXZ/",
-  Holud: "https://www.facebook.com/share/p/1HhwxXLTdK/",
-  Reception: "https://www.facebook.com/share/p/1CPBMDALnr/",
-  Birthday: "https://www.facebook.com/share/p/16SuBqyuTY/",
-  "Bridal shower": "https://www.facebook.com/share/p/16aY1nrJ1q/",
-  Maternity: "https://www.facebook.com/share/p/1939TA3FAt/",
-  Rong: "https://www.facebook.com/share/p/1HhwxXLTdK/",
-  Story: "https://www.facebook.com/share/p/15p75KfAV4/",
-  Basic: "https://www.facebook.com/share/p/18ufckqyrq/",
-  Classic: "https://www.facebook.com/share/p/1AVXF8CRXZ/",
-  Standard: "https://www.facebook.com/share/p/1ErUpCoPJ5/",
-  Premium: "https://www.facebook.com/share/p/1CPBMDALnr/",
-  default: "https://www.facebook.com/share/p/1CPBMDALnr/",
+  Basic: "https://www.facebook.com/photo/?fbid=1031747379101633&set=pcb.1031747799101591",
+  "Bridal shower": "https://www.facebook.com/photo/?fbid=1031747495768288&set=pcb.1031747799101591",
+  Rong: "https://www.facebook.com/photo/?fbid=1031747402434964&set=pcb.1031747799101591",
+  Birthday: "https://www.facebook.com/photo/?fbid=1031747502434954&set=pcb.1031747799101591",
+  Story: "https://www.facebook.com/photo/?fbid=1031747392434965&set=pcb.1031747799101591",
+  Premium: "https://www.facebook.com/photo/?fbid=1031747462434958&set=pcb.1031747799101591",
+  Classic: "https://www.facebook.com/photo/?fbid=1031747425768295&set=pcb.1031747799101591",
+  Standard: "https://www.facebook.com/photo/?fbid=1031747512434953&set=pcb.1031747799101591",
+  default: "https://www.facebook.com/TheStoryMakerBD"
 };
 
 const rawPackages = [
-  { name: "Basic One", price: "5,000৳", details: ["1 Senior Photographer", "Online Delivery", "5 Hours Coverage"] },
-  { name: "Basic Two", price: "7,000৳", details: ["1 Lead Photographer", "Online & Pendrive Delivery", "5 Hours Coverage"] },
-  { name: "Classic One", price: "9,000৳", details: ["1 Senior Photographer", "1 Lead Cinematographer", "Online Delivery", "5 Hours Coverage"] },
-  { name: "Classic Two", price: "11,000৳", details: ["1 Senior Photographer", "1 Lead Cinematographer", "Online & Pendrive Delivery", "5 Hours Coverage"] },
-  { name: "Standard One", price: "13,000৳", details: ["2 Senior Photographers", "1 Senior Cinematographer", "Online Delivery", "5 Hours Coverage"] },
-  { name: "Standard Two", price: "23,000৳", details: ["2 Lead Photographers (Anisur Rahman)", "1 Lead Cinematographer", "Online & Pendrive Delivery", "5 Hours Coverage"] },
-  { name: "Premium One", price: "16,000৳", details: ["2 Senior Photographers", "2 Senior Cinematographers", "Online Delivery", "5 Hours Coverage"] },
-  { name: "Premium Two", price: "26,000৳", details: ["2 Lead Photographers (Anisur Rahman)", "2 Lead Cinematographers", "Online & Pendrive Delivery", "5 Hours Coverage"] },
-  { name: "The Story Line One", price: "30,000৳", details: ["3 Lead Photographers (Anisur Rahman)", "2 Lead Cinematographers", "5 Hours Coverage"] },
-  { name: "The Story Line Two", price: "45,000৳", details: ["3 Lead Photographers (Anisur Rahman)", "3 Lead Cinematographers", "5 Hours Coverage"] },
-  { name: "The Story Line Three", price: "60,000৳", details: ["4 Lead Photographers (Anisur Rahman)", "4 Lead Cinematographers", "5 Hours Coverage"] },
-  { name: "The Birthday One", price: "5,500৳", details: ["1 Senior Photographer", "5 Hours Coverage"] },
-  { name: "The Birthday Two", price: "9,500৳", details: ["1 Senior Photographer", "1 Lead Cinematographer", "5 Hours Coverage"] },
-  { name: "The Birthday Three", price: "15,000৳", details: ["2 Lead Photographers (Anisur Rahman)", "1 Lead Cinematographers", "5 Hours Coverage"] },
-  { name: "The Maternity One", price: "7,500৳", details: ["1 Lead Photographer (Anisur Rahman)", "5 Hours Coverage"] },
-  { name: "The Maternity Two", price: "14,500৳", details: ["1 Lead Photographer", "1 Lead Cinematographer", "5 Hours Coverage"] },
-  { name: "The Rong One", price: "4,500৳", details: ["1 Senior Photographer", "4 Hours Coverage"] },
-  { name: "The Rong Two", price: "8,500৳", details: ["1 Senior Photographer", "1 Lead Cinematographer", "5 Hours Coverage"] },
-  { name: "The Rong Three", price: "15,000৳", details: ["2 Senior Photographer (Anisur Rahman)", "1 Lead Cinematographer", "5 Hours Coverage"] },
-  { name: "The Outdoor One", price: "5,000৳", details: ["1 Lead Photographer", "Online Delivery", "2 Location", "4 Hour Coverage"] },
-  { name: "The Outdoor Two", price: "11,000৳", details: ["1 Lead Photographer", "1 Lead Cinematographer", "5 Hours Coverage"] },
-  { name: "The Bridal Shower One", price: "7,500৳", details: ["1 Lead Photographer (Anisur Rahman)", "1 Lead Cinematographer", "5 Hours Coverage"] },
-  { name: "The Bridal Shower Two", price: "13,000৳", details: ["1 Senior Photographer", "1 Lead Cinematographer", "5 Hours Coverage"] },
+  {
+    name: "Basic One",
+    price: "5,000৳",
+    details: [
+      "1 Senior Photographer",
+      "Unlimited Raw Images",
+      "50 Copy Edited Images",
+      "Online Delivery",
+      "5 Hours Coverage",
+      "Delivery in 20-25 Days (Raw in 7 Days)"
+    ]
+  },
+  {
+    name: "Basic Two",
+    price: "7,000৳",
+    details: [
+      "1 Lead Photographer",
+      "Unlimited Raw Images",
+      "80 Copy Edited Images",
+      "50 Copy 4R Prints",
+      "Online & Pendrive Delivery",
+      "5 Hours Coverage",
+      "Delivery in 15-18 Days (Raw in 7 Days)"
+    ]
+  },
+  {
+    name: "Classic One",
+    price: "9,000৳",
+    details: [
+      "1 Senior Photographer",
+      "1 Senior Cinematographer",
+      "Unlimited Raw Images",
+      "Unlimited Cinematography",
+      "100 Copy Edited Images",
+      "2-3 Min Trailer, 20-30 Min Movie",
+      "Online Delivery",
+      "5 Hours Coverage",
+      "Delivery in 20-25 Days (Raw in 7 Days)"
+    ]
+  },
+  {
+    name: "Classic Two",
+    price: "11,000৳",
+    details: [
+      "1 Lead Photographer",
+      "1 Lead Cinematographer",
+      "Unlimited Raw Images",
+      "Unlimited Cinematography",
+      "120 Copy Edited Images",
+      "70 Copy 4R Prints",
+      "2-4 Min Trailer, 30-40 Min Movie",
+      "Online & Pendrive Delivery",
+      "5 Hours Coverage",
+      "Delivery in 15-18 Days (Raw in 7 Days)"
+    ]
+  },
+  {
+    name: "Standard One",
+    price: "13,000৳",
+    details: [
+      "2 Senior Photographers",
+      "1 Senior Cinematographer",
+      "Unlimited Raw Images",
+      "Unlimited Cinematography",
+      "150 Copy Edited Images",
+      "2-3 Min 4K Trailer, 20-30 Min Movie",
+      "Online Delivery",
+      "5 Hours Coverage",
+      "Delivery in 20-25 Days (Raw in 7 Days)"
+    ]
+  },
+  {
+    name: "Standard Two",
+    price: "23,000৳",
+    details: [
+      "2 Lead Photographers (Anisur Rahman 3hr)",
+      "1 Lead Cinematographer",
+      "Unlimited Raw Images",
+      "Unlimited Cinematography",
+      "180+ Copy Edited Images",
+      "120 Copy 4R Prints",
+      "2-4 Min Exclusive 4K Trailer, 30-40 Min 4K Movie",
+      "Online & Pendrive Delivery",
+      "5 Hours Coverage",
+      "Delivery in 15 Days (Raw in 7 Days)"
+    ]
+  },
+  {
+    name: "Premium One",
+    price: "16,000৳",
+    details: [
+      "2 Senior Photographers",
+      "2 Senior Cinematographers",
+      "Unlimited Raw Images",
+      "Unlimited Cinematography",
+      "190 Copy Edited Images",
+      "2-3 Min Trailer, 20-30 Min Movie",
+      "Online Delivery",
+      "5 Hours Coverage",
+      "Delivery in 20-25 Days (Raw in 7 Days)"
+    ]
+  },
+  {
+    name: "Premium Two",
+    price: "26,000৳",
+    details: [
+      "2 Lead Photographers (Anisur Rahman 4hr)",
+      "2 Lead Cinematographers",
+      "Unlimited Raw Images",
+      "Unlimited Cinematography",
+      "200+ Copy Edited Images",
+      "150 Copy 4R Prints",
+      "2-4 Min Exclusive Trailer, 30-40 Min Movie",
+      "1 Facebook Reel",
+      "Online & Pendrive Delivery",
+      "5 Hours Coverage",
+      "Delivery in 15 Days (Raw in 7 Days)"
+    ]
+  },
+  {
+    name: "StoryLine One",
+    price: "30,000৳",
+    details: [
+      "2 Lead Photographers (Anisur Rahman Full Event)",
+      "2 Lead Cinematographers",
+      "Unlimited Raw Images",
+      "Unlimited Cinematography",
+      "Unlimited Edited Images",
+      "200 Copy 4R Prints",
+      "1 Photo Album",
+      "2-4 Min Exclusive Trailer, 30-40 Min Movie",
+      "Online & Pendrive Delivery",
+      "5 Hours Coverage",
+      "Delivery in 15 Days (Raw in 7 Days)"
+    ]
+  },
+  {
+    name: "StoryLine Two",
+    price: "45,000৳",
+    details: [
+      "3 Lead Photographers (Anisur Rahman Full Event)",
+      "3 Lead Cinematographers",
+      "Unlimited Raw Images",
+      "Unlimited Cinematography",
+      "Unlimited Edited Images",
+      "260 Copy 4R Prints",
+      "1 Photo Album",
+      "2-4 Min Exclusive 4K Trailer, 30-40 Min 4K Movie",
+      "1 Instagram Reel",
+      "Free Outdoor Photoshoot",
+      "Online & Pendrive Delivery",
+      "6 Hours Coverage",
+      "Delivery in 10 Days (Raw in 7 Days)"
+    ]
+  },
+  {
+    name: "StoryLine Three",
+    price: "60,000৳",
+    details: [
+      "4 Lead Photographers (Anisur Rahman Full Event)",
+      "4 Lead Cinematographers (Jahangir Full Time)",
+      "Unlimited Raw Images",
+      "Unlimited Cinematography",
+      "Unlimited Edited Images",
+      "320 Copy 4R Prints",
+      "1 10L Print with Frame",
+      "1 Photo Album",
+      "Drone Shoot",
+      "2-4 Min Storytelling 4K Trailer, 30-40 Min 4K Movie",
+      "1 IG Reel, 1 FB Reel",
+      "1 Pre/Post Wedding Shoot",
+      "Online & Pendrive Delivery",
+      "No Time Limit",
+      "Delivery in 7 Days (Raw in 7 Days)"
+    ]
+  },
+  {
+    name: "Birthday One",
+    price: "5,500৳",
+    details: [
+      "1 Senior Photographer",
+      "Unlimited Raw Images",
+      "100 Copy Edited Images",
+      "Online Delivery",
+      "5 Hours Coverage",
+      "Delivery in 18 Days (Raw in 7 Days)"
+    ]
+  },
+  {
+    name: "Birthday Two",
+    price: "9,500৳",
+    details: [
+      "1 Senior Photographer",
+      "1 Senior Cinematographer",
+      "Unlimited Raw Images",
+      "Unlimited Cinematography",
+      "100 Copy Edited Images",
+      "2-3 Min Trailer, 20-30 Min Movie",
+      "Online Delivery",
+      "5 Hours Coverage",
+      "Delivery in 20 Days (Raw in 7 Days)"
+    ]
+  },
+  {
+    name: "Birthday Three",
+    price: "15,000৳",
+    details: [
+      "2 Lead Photographers (Anisur Rahman 3hr)",
+      "1 Lead Cinematographer",
+      "Unlimited Raw Images",
+      "Unlimited Cinematography",
+      "180+ Copy Edited Images",
+      "50 Copy Prints",
+      "2-4 Min Exclusive Trailer, 30-40 Min Movie",
+      "Online & Pendrive Delivery",
+      "5 Hours Coverage",
+      "Delivery in 10 Days (Raw in 7 Days)"
+    ]
+  },
+  {
+    name: "Maternity One",
+    price: "7,500৳",
+    details: [
+      "1 Lead Photographer (Anisur Rahman)",
+      "Unlimited Raw Images",
+      "100 Copy Edited Images",
+      "50 Copy Prints",
+      "Online & Pendrive Delivery",
+      "5 Hours Coverage",
+      "Delivery in 15 Days (Raw in 7 Days)"
+    ]
+  },
+  {
+    name: "Maternity Two",
+    price: "14,500৳",
+    details: [
+      "1 Lead Photographer (Anisur Rahman 4hr)",
+      "1 Lead Cinematographer",
+      "Unlimited Raw Images",
+      "Unlimited Cinematography",
+      "120+ Copy Edited Images",
+      "50 Copy Prints",
+      "2-4 Min Exclusive Trailer, 30-40 Min Movie",
+      "1 Instagram Reel",
+      "Online & Pendrive Delivery",
+      "5 Hours Coverage",
+      "Delivery in 10 Days (Raw in 7 Days)"
+    ]
+  },
+  {
+    name: "Outdoor One",
+    price: "5,000৳",
+    details: [
+      "1 Senior Photographer",
+      "Unlimited Raw Images",
+      "100 Copy Edited Images",
+      "Online Delivery",
+      "2 Locations",
+      "4 Hours Coverage",
+      "Delivery in 20 Days (Raw in 7 Days)"
+    ]
+  },
+  {
+    name: "Outdoor Two",
+    price: "11,000৳",
+    details: [
+      "1 Lead Photographer",
+      "1 Lead Cinematographer",
+      "Unlimited Raw Images",
+      "Unlimited Cinematography",
+      "100 Copy Edited Images",
+      "2-4 Min Storytelling Trailer",
+      "Pendrive Delivery",
+      "2 Locations",
+      "4 Hours Coverage",
+      "Delivery in 20 Days (Raw in 7 Days)"
+    ]
+  },
+  {
+    name: "Rong One",
+    price: "4,500৳",
+    details: [
+      "1 Senior Photographer",
+      "Unlimited Raw Images",
+      "50 Copy Edited Images",
+      "Online Delivery",
+      "4 Hours Coverage",
+      "Delivery in 20-25 Days (Raw in 7 Days)"
+    ]
+  },
+  {
+    name: "Rong Two",
+    price: "8,500৳",
+    details: [
+      "1 Senior Photographer",
+      "1 Senior Cinematographer",
+      "Unlimited Raw Images",
+      "Unlimited Cinematography",
+      "100 Copy Edited Images",
+      "2-3 Min Trailer, 20-30 Min Movie",
+      "Online Delivery",
+      "4 Hours Coverage",
+      "Delivery in 20-25 Days (Raw in 7 Days)"
+    ]
+  },
+  {
+    name: "Rong Three",
+    price: "15,000৳",
+    details: [
+      "2 Lead Photographers (Anisur Rahman 3hr)",
+      "1 Lead Cinematographer",
+      "Unlimited Raw Images",
+      "Unlimited Cinematography",
+      "180 Copy Edited Images",
+      "50 Copy Prints",
+      "2-4 Min Exclusive Trailer, 30-40 Min Movie",
+      "Online & Pendrive Delivery",
+      "5 Hours Coverage",
+      "Delivery in 15 Days (Raw in 7 Days)"
+    ]
+  },
+  {
+    name: "Bridal Shower One",
+    price: "7,500৳",
+    details: [
+      "1 Lead Photographer (Anisur Rahman)",
+      "Unlimited Raw Images",
+      "100 Copy Edited Images",
+      "50 Copy Prints",
+      "Online & Pendrive Delivery",
+      "5 Hours Coverage",
+      "Delivery in 20 Days (Raw in 7 Days)"
+    ]
+  },
+  {
+    name: "Bridal Shower Two",
+    price: "13,000৳",
+    details: [
+      "1 Lead Photographer",
+      "1 Lead Cinematographer",
+      "Unlimited Raw Images",
+      "Unlimited Cinematography",
+      "100+ Edited Images",
+      "40 Copy Prints",
+      "2-4 Min Exclusive Trailer, 30-40 Min Movie",
+      "Online & Pendrive Delivery",
+      "5 Hours Coverage",
+      "Delivery in 10 Days (Raw in 7 Days)"
+    ]
+  },
 ];
+
 
 const groupedPackages = {};
 rawPackages.forEach((pkg) => {
@@ -173,7 +493,7 @@ const PackageSection = () => {
                     d="M15 10l4.553-4.553a1 1 0 00-1.414-1.414L13 8.586 7.414 3H5v2.414L10.586 11 3 18.586V21h2.414L13 12.414l3.586 3.586a1 1 0 001.414-1.414L15 10z"
                   />
                 </svg>
-                View Album
+                Details
               </a>
             </motion.article>
           );

@@ -51,7 +51,7 @@ const Footer = () => {
               <FaInstagram />
             </a>
             <a
-              href="https://www.youtube.com/@thestorymakerbd"
+              href="https://www.youtube.com/@thestorymakeronline"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-red-600 p-3 rounded-full hover:bg-red-500 transition"
