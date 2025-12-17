@@ -31,16 +31,23 @@ const HeroSection = () => {
       {/* Background image */}
       <div className="hero-background absolute inset-0 overflow-hidden">
         <AnimatePresence initial={false} custom={direction}>
-          <motion.img
+          <motion.div
             key={index}
-            src={backgrounds[index]}
-            alt={`Background photo ${index + 1} - The Story Maker Photography`}
-            className="absolute w-full h-full object-cover"
+            className="absolute inset-0"
             initial={{ x: direction > 0 ? '100%' : '-100%', opacity: 0 }}
             animate={{ x: '0%', opacity: 1 }}
             exit={{ x: direction > 0 ? '-100%' : '100%', opacity: 0 }}
             transition={{ duration: 1, ease: 'easeInOut' }}
-          />
+          >
+            <motion.img
+              src={backgrounds[index]}
+              alt={`Background photo ${index + 1} - The Story Maker Photography`}
+              className="absolute w-full h-full object-cover"
+              initial={{ scale: 1 }}
+              animate={{ scale: 1.1 }}
+              transition={{ duration: 5, ease: 'linear' }}
+            />
+          </motion.div>
         </AnimatePresence>
       </div>
 
